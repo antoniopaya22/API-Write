@@ -1,8 +1,8 @@
-name: "asturias Client"
+name: "brasil Client"
 version: "1.0"
 
 client:
-  organization: asturias
+  organization: brasil
   credentialStore:
     path: "./keys"
     cryptoStore:
@@ -30,16 +30,16 @@ channels:
         eventSource: true
 
 organizations:
-  asturias:
-    mspid: asturiasMSP
+  brasil:
+    mspid: brasilMSP
     peers:
-      - peer0.asturias.arcelormittal.com
+      - peer0.brasil.arcelormittal.com
     certificateAuthorities:
-      - ca.asturias.arcelormittal.com
+      - ca.brasil.arcelormittal.com
 
 peers:
-  peer0.asturias.arcelormittal.com:
-    url: grpc://localhost:7051
+  peer0.brasil.arcelormittal.com:
+    url: grpc://localhost:11051
 
 orderers:
   orderer.arcelormittal.com:

@@ -29,7 +29,7 @@ mocha.describe('Add dato and delete dato: ',function () {
 			return redFabric.getLastNum()
 		}).then(function (data) {
 			chai.request(url)
-			.delete('/dato/ID_AS'+(parseInt(data.Num)-1))
+			.delete('/dato/ID_BRA'+(parseInt(data.Num)-1))
 			.end( function(err,res){
 				expect(res).to.have.status(200);
 				done();
