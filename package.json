@@ -1,0 +1,44 @@
+{
+  "name": "API-Write",
+  "version": "1.0.0",
+  "description": "API-Write para Hyperledger Fabric NodeJS Server",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "./node_modules/.bin/mocha --reporter spec"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ProyectosUNIOVI/API-Write/tree/master"
+  },
+  "keywords": [
+    "ArcelorMittal",
+    "Hyperledger",
+    "Fabric",
+    "NodeJS",
+    "Server",
+    "Hyperledger",
+    "Fabric"
+  ],
+  "author": "Antonio Paya Gonzalez",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chai-http": "^4.2.1",
+    "dotenv": "^7.0.0",
+    "ejs": "latest",
+    "express": "^4.16.4",
+    "express-fileupload": "^1.1.1-alpha.1",
+    "fabric-ca-client": "^1.4.0",
+    "fabric-client": "^1.4.0",
+    "grpc": "^1.6.0",
+    "mongoose": "^5.4.19",
+    "rest": "^2.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.1.1",
+    "nodemon": "^1.18.9"
+  },
+  "license": "MIT"
+}
