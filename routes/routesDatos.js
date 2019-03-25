@@ -75,9 +75,9 @@ module.exports = function (app, redFabric, mongo) {
     redFabric.init().then(function (){
       return redFabric.getLastNum()
     }).then(function (data) {
-      id = "ID_BRA"+data.Num;
+      id = "ID_CH"+data.Num;
       var dato = {
-        id: "ID_BRA"+data.Num,
+        id: "ID_CH"+data.Num,
         temperature: req.body.temperature,
         hour: req.body.hour,
         device: req.body.device,

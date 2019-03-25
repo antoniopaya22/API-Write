@@ -23,7 +23,7 @@ function copyHfc(){
     mkdir keys
     cd $DIR
 
-    cp -a $BLOCKDIR/hfc-key-store/brasil/. $DIR
+    cp -a $BLOCKDIR/hfc-key-store/chicago/. $DIR
 }
 
 function copyPeerOrderer(){
@@ -33,7 +33,7 @@ function copyPeerOrderer(){
 
     cd $DIR
 
-    cp $BLOCKDIR/crypto-config/peerOrganizations/brasil.arcelormittal.com/peers/peer0.brasil.arcelormittal.com/msp/tlscacerts/tlsca.brasil.arcelormittal.com-cert.pem $DIR
+    cp $BLOCKDIR/crypto-config/peerOrganizations/chicago.arcelormittal.com/peers/peer0.chicago.arcelormittal.com/msp/tlscacerts/tlsca.chicago.arcelormittal.com-cert.pem $DIR
 
     echo 
     echo "---------- Copiando orderer keys--------------"

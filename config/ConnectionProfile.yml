@@ -1,8 +1,8 @@
-name: "brasil Client"
+name: "chicago Client"
 version: "1.0"
 
 client:
-  organization: brasil
+  organization: chicago
   credentialStore:
     path: "./keys"
     cryptoStore:
@@ -30,15 +30,15 @@ channels:
         eventSource: true
 
 organizations:
-  brasil:
-    mspid: brasilMSP
+  chicago:
+    mspid: chicagoMSP
     peers:
-      - peer0.brasil.arcelormittal.com
+      - peer0.chicago.arcelormittal.com
     certificateAuthorities:
-      - ca.brasil.arcelormittal.com
+      - ca.chicago.arcelormittal.com
 
 peers:
-  peer0.brasil.arcelormittal.com:
+  peer0.chicago.arcelormittal.com:
     url: grpc://localhost:11051
 
 orderers:
