@@ -43,4 +43,4 @@ peers:
 
 orderers:
   orderer.arcelormittal.com:
-    url: grpc://192.168.0.3:7050
+    url: grpc://172.31.0.84:7050
