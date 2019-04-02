@@ -46,7 +46,7 @@ require("./routes/routesDatos.js")(app, redFabric, mongo);
 // Lanza el servidor
 app.listen(app.get('port'), function() {
     console.log("===================================");
-    console.log("NodeJS ");
+    console.log("API - WRITE ");
     console.log("===================================");
     console.log("Autor: Antonio Paya Gonzalez");
     console.log("Servidor activo en el puerto: 8081");
