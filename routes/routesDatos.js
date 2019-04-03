@@ -44,7 +44,7 @@ module.exports = function (app, redFabric, mongo) {
    /**
    * GET fantastic query
    */
-  app.get("/api/dato/query", function (req, res) {
+  app.get("/api/query", function (req, res) {
     redFabric.init().then(function () {
       var consulta = "{'selector':{}}";
       console.log(consulta);
