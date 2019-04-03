@@ -28,12 +28,12 @@ module.exports = function (app, redFabric, mongo) {
   });
 
   /**
-   * GET dato history : id
+   * GET fantastic query
    */
-  app.get("/api/dato/history/:id", function (req, res) {
-    var id = req.params.id;
+  app.post("/api/query/:query", function (req, res) {
     redFabric.init().then(function () {
-      return redFabric.getDatoHistory(id)
+      consulta = req.body;
+      return redFabric.fantasticQuery(consulta);
     }).then(function (data) {
       res.status(200).json(data)
     }).catch(function (err) {
