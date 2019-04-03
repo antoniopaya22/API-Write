@@ -114,6 +114,7 @@ class FBClient extends FabricClient {
     query(requestData) {
         var channel = this.getChannel();
         return channel.queryByChaincode(requestData).then((response_payloads) => {
+		console.log(response_payloads.toString('utf8'));
             var resultData = JSON.parse(response_payloads.toString('utf8'));
             return resultData;
         }).then(function(resultData) {
