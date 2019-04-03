@@ -105,6 +105,17 @@ class RedFabric {
     };
     return this.connection.query(requestData);
   }
+
+  fantasticQuery(query) {
+    var tx_id = this.connection.newTransactionID();
+    var requestData = {
+      chaincodeId: 'mycontract',
+      fcn: 'queryDatoCouchDB',
+      args: [query],
+      txId: tx_id
+    };
+    return this.connection.query(requestData);
+  }
   
 }
 
