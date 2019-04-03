@@ -42,6 +42,20 @@ module.exports = function (app, redFabric, mongo) {
   });
 
   /**
+   * GET fantastic query
+   */
+  app.get("/api/dato", function (req, res) {
+    var query = req.body;
+    redFabric.init().then(function () {
+      return redFabric.fantasticQuery(query);
+    }).then(function (data) {
+      res.status(200).json(data)
+    }).catch(function (err) {
+      res.status(500).json({ error: err.toString() })
+    })
+  });
+
+  /**
    * DELETE dato : id
    */
   app.delete("/api/dato/:id", function (req, res) {
