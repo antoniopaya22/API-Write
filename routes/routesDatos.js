@@ -30,10 +30,10 @@ module.exports = function (app, redFabric, mongo) {
   /**
    * GET fantastic query
    */
-  app.post("/api/query/:query", function (req, res) {
+  app.post("/api/query", function (req, res) {
     redFabric.init().then(function () {
       consulta = req.body;
-      return redFabric.fantasticQuery(consulta);
+      return redFabric.fantasticQuery(JSON.stringify(consulta));
     }).then(function (data) {
       res.status(200).json(data)
     }).catch(function (err) {
