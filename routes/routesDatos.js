@@ -44,14 +44,14 @@ module.exports = function (app, redFabric, mongo) {
   /**
    * GET fantastic query
    */
-  app.get("/api/dato/query", function (req, res) {
-    var query = req.body;
+  app.post("/data/query", function (req, res) {
     redFabric.init().then(function () {
-      return redFabric.fantasticQuery(query);
+        var consulta = req.body;
+        return redFabric.fantasticQuery(JSON.stringify(consulta));
     }).then(function (data) {
-      res.status(200).json(data)
+        res.status(200).json(data)
     }).catch(function (err) {
-      res.status(500).json({ error: err.toString() })
+        res.status(500).json({ error: err.toString() })
     })
   });
 
