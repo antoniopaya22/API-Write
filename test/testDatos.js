@@ -43,9 +43,10 @@ mocha.describe('Add dato and delete dato: ',function () {
 mocha.describe('Put dato: ',function (){
     this.timeout(5000);
 	it('put a data', (done) => {
+		var date = new Date().getMilliseconds().toString();
 		chai.request(url)
 			.put('/dato/ID_PRUEBA_0')
-			.send({temperature:"10", hour: "11:11", device: "test", gps: "11111;1111111"})
+			.send({temperature:"10", hour: date, device: "test", gps: "11111;1111111"})
 			.end( function(err,res){
 				console.log(res.body)
 				expect(res).to.have.status(200);
@@ -54,15 +55,16 @@ mocha.describe('Put dato: ',function (){
     });
     
     it('error at put a data', (done) => {
-		chai.request(url)
-			.put('/dato/ID_PRUEBA_X')
-			.send({temperature:"10", hour: "11:11", device: "test", gps: "11111;1111111"})
-			.end( function(err,res){
-				console.log(res.body)
-				expect(res).to.have.status(500);
-				done();
-			});
-	});
+			var date = new Date().getMilliseconds().toString();
+			chai.request(url)
+				.put('/dato/ID_PRUEBA_X')
+				.send({temperature:"10", hour: date, device: "test", gps: "11111;1111111"})
+				.end( function(err,res){
+					console.log(res.body)
+					expect(res).to.have.status(500);
+					done();
+				});
+		});
   
 });
 
