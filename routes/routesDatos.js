@@ -145,5 +145,26 @@ module.exports = function (app, redFabric, mongo) {
     })
   });
 
+  /**
+    * Actualizar BD Local
+   */
+  app.post("/actualizar", function (req, res) {
+    redFabric.init().then(function () {
+      return redFabric.queryAllDatos();
+    }).then(function (data) {
+      mongo.deleteDb().then(function (){
+           mongo.updateDb(data.filter(x => x.Record.node == process.env.NODE)).then(function (){
+              res.status(200).json({"status":"ok"});
+            }).catch(function (err) {
+              res.status(500).json({ error: err.toString() })
+            });
+        }).catch(function (err) {
+          res.status(500).json({ error: err.toString() })
+        });
+    }).catch(function (err) {
+      res.status(500).json({ error: err.toString() })
+    });
+  });
+
 
 };

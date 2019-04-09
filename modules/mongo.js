@@ -58,6 +58,39 @@ module.exports = {
                 rej(err)
             })
         })
+    },
+
+    deleteDb(){
+         return new Promise((res, rej) => {
+            data.deleteOne({}).then(doc => {
+                res()
+            }).catch(err => {
+                rej(err)
+            })
+        })
+    },
+
+    updateDb(datos){
+         return new Promise((res, rej) => {
+             console.log(datos);
+            var objects = [];
+            for (let i = 0; i < datos.length; i++) {
+                const dato = datos[i];
+                objects.push({
+                    id: dato.Key,
+                    temperature: dato.Record.temperature,
+                    hour: dato.Record.hour,
+                    device: dato.Record.device,
+                    gps: dato.Record.gps
+                });
+                console.log(objects);
+            }
+            data.create(objects).then(doc => {
+                res(objects)
+            }).catch(err => {
+                rej(err)
+            })
+        })
     }
 
 }
