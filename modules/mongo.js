@@ -62,7 +62,7 @@ module.exports = {
 
     deleteDb(){
          return new Promise((res, rej) => {
-            data.deleteOne({}).then(doc => {
+            data.deleteMany({}).then(doc => {
                 res()
             }).catch(err => {
                 rej(err)

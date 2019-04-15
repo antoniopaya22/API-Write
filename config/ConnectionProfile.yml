@@ -43,4 +43,4 @@ peers:
 
 orderers:
   orderer.antonio.com:
-    url: grpc://172.31.0.84:7050
+    url: grpc://156.35.163.141:7050
