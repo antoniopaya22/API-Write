@@ -32,20 +32,6 @@ module.exports = function (app, redFabric, mongo) {
    */
   app.post("/api/query", function (req, res) {
     redFabric.init().then(function () {
-      consulta = req.body;
-      return redFabric.fantasticQuery(JSON.stringify(consulta));
-    }).then(function (data) {
-      res.status(200).json(data)
-    }).catch(function (err) {
-      res.status(500).json({ error: err.toString() })
-    })
-  });
-
-  /**
-   * GET fantastic query
-   */
-  app.post("/data/query", function (req, res) {
-    redFabric.init().then(function () {
         var consulta = req.body;
         return redFabric.fantasticQuery(JSON.stringify(consulta));
     }).then(function (data) {
@@ -60,7 +46,6 @@ module.exports = function (app, redFabric, mongo) {
    */
   app.delete("/api/dato/:id", function (req, res) {
     var id = req.params.id;
-
     redFabric.init().then(function () {
       return redFabric.queryDato(id)
     }).then(function (data) {
@@ -125,7 +110,6 @@ module.exports = function (app, redFabric, mongo) {
       device: req.body.device,
       gps: req.body.gps,
     };
-
     redFabric.init().then(function () {
       return redFabric.queryDato(id)
     }).then(function (data) {
@@ -141,7 +125,7 @@ module.exports = function (app, redFabric, mongo) {
         res.status(500).json({ error: err.toString() })
       })
     }).catch(function (err) {
-      res.status(500).json({ error: err.toString() })
+      res.status(500).json({ error: "El dato con id: "+id+" no existe." })
     })
   });
 
@@ -153,7 +137,7 @@ module.exports = function (app, redFabric, mongo) {
       return redFabric.queryAllDatos();
     }).then(function (data) {
       mongo.deleteDb().then(function (){
-           mongo.updateDb(data.filter(x => x.Record.node == process.env.NODE)).then(function (){
+           mongo.updateDb(data.filter(x => x.Record.node.toString() === process.env.NODE.toString())).then(function (){
               res.status(200).json({"status":"ok"});
             }).catch(function (err) {
               res.status(500).json({ error: err.toString() })
