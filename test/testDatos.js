@@ -4,6 +4,7 @@ let chaiHttp = require('chai-http');
 const expect = require('chai').expect;
 let RedFabric = require('../modules/redFabric');
 const redFabric = new RedFabric("user1");
+let should = chai.should();
 
 chai.use(chaiHttp);
 const url= 'http://localhost:8081/api';
