@@ -105,7 +105,7 @@ class RedFabric {
     };
     return this.connection.query(requestData);
   }
-  
+
   fantasticQuery(query) {
     var tx_id = this.connection.newTransactionID();
     var requestData = {
@@ -116,6 +116,7 @@ class RedFabric {
     };
     return this.connection.query(requestData);
   }
+  
 }
 
 module.exports = RedFabric;
