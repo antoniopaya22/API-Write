@@ -108,7 +108,7 @@ mocha.describe('Prueba a obtener un dato mediante una query', function () {
 			}
 		}		
 		chai.request(url)
-			.post('/dato/ID_PRUEBA_0')
+			.post('/query/ID_PRUEBA_0')
 			.send(query)
 			.end((err, res) => {
 				res.should.have.status(200);
