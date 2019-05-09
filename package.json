@@ -6,7 +6,6 @@
   "scripts": {
     "start": "nodemon server.js",
     "test": "./node_modules/.bin/mocha --reporter spec"
-
   },
   "repository": {
     "type": "git",
@@ -33,6 +32,7 @@
     "fabric-client": "^1.4.0",
     "grpc": "^1.6.0",
     "mongoose": "^5.4.19",
+    "node-api-doc-generator": "^1.1.1",
     "rest": "^2.0.0"
   },
   "devDependencies": {

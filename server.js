@@ -19,6 +19,9 @@ var fileUpload = require('express-fileupload');
 var rest = require('request');
 require('dotenv').config();
 
+const nodeApiDocGenerator = require('node-api-doc-generator')
+nodeApiDocGenerator(app,'',8081)
+
  
 //==========VARIABLES===============
 app.set('port', 8081);
