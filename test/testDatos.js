@@ -9,10 +9,10 @@ let should = chai.should();
 chai.use(chaiHttp);
 const url= 'http://localhost:8081/api';
 
-mocha.describe('Prueba a crear un dato y después eliminarlo: ',function () {
+mocha.describe('CRUD Datos tests: ',function () {
 	this.timeout(5000);
 
-	it('Add dato', (done) => {
+	it('Añadir un nuevo dato.', (done) => {
 		var date = new Date().getMilliseconds().toString();
 		chai.request(url)
 			.post('/dato')
@@ -24,7 +24,7 @@ mocha.describe('Prueba a crear un dato y después eliminarlo: ',function () {
 			});
 	});
 
-	it('Delete dato', (done) => {
+	it('Eliminar un dato existente.', (done) => {
 		redFabric.init().then(function (){
 			return redFabric.getLastNum()
 		}).then(function (data) {
@@ -38,11 +38,23 @@ mocha.describe('Prueba a crear un dato y después eliminarlo: ',function () {
 			console.log(err);
 		});
 	});
-});
 
-mocha.describe('Prueba a actualizar el dato ID_PRUEBA_0 y después prueba a actualizar un dato inexistente: ',function (){
-    this.timeout(5000);
-	it('Update dato', (done) => {
+	it('Eliminar un dato no existente.', (done) => {
+		redFabric.init().then(function (){
+			return redFabric.getLastNum()
+		}).then(function (data) {
+			chai.request(url)
+			.delete('/dato/XXXX')
+			.end( function(err,res){
+				expect(res).to.have.status(500);
+				done();
+			});
+		}).catch(function (err) {
+			console.log(err);
+		});
+	});
+
+	it('Actualizar un dato existente', (done) => {
 		var date = new Date().getMilliseconds().toString();
 		chai.request(url)
 			.put('/dato/ID_PRUEBA_0')
@@ -52,25 +64,21 @@ mocha.describe('Prueba a actualizar el dato ID_PRUEBA_0 y después prueba a actu
 				expect(res).to.have.status(200);
 				done();
 			});
-    });
-    
-    it('Wrong update dato', (done) => {
-			var date = new Date().getMilliseconds().toString();
-			chai.request(url)
-				.put('/dato/ID_PRUEBA_X')
-				.send({temperature:"10", hour: date, device: "test", gps: "-12.954811916515027;-5.344964478190036"})
-				.end( function(err,res){
-					console.log(res.body)
-					expect(res).to.have.status(500);
-					done();
-				});
-		});
-  
-});
+	});
+	
+	it('Actualizar un dato no existente', (done) => {
+		var date = new Date().getMilliseconds().toString();
+		chai.request(url)
+			.put('/dato/ID_PRUEBA_X')
+			.send({temperature:"10", hour: date, device: "test", gps: "-12.954811916515027;-5.344964478190036"})
+			.end( function(err,res){
+				console.log(res.body)
+				expect(res).to.have.status(500);
+				done();
+			});
+	});
 
-mocha.describe('Prueba a obtener todos los datos', function () {
-	this.timeout(5000);
-	it('Get all data', (done) => {
+	it('Obtener todos los datos', (done) => {
 		chai.request(url)
 			.get('/datos')
 			.end((err, res) => {
@@ -79,29 +87,17 @@ mocha.describe('Prueba a obtener todos los datos', function () {
 			done();
 			});
 	});
-});
 
-mocha.describe('Prueba a obtener un dato con id ID_PRUEBA_0', function () {
-	this.timeout(5000);
-	it('Get by id', (done) => {
+	it('Buscar un dato no existente por su id', (done) => {
 		chai.request(url)
-			.get('/dato/ID_PRUEBA_0')
+			.get('/dato/XXX')
 			.end((err, res) => {
-				res.should.have.status(200);
-				res.body.should.be.a('object');
-				res.body.should.have.property('temperature');
-				res.body.should.have.property('device');
-				res.body.should.have.property('gps');
-				res.body.should.have.property('hour');
-				res.body.should.have.property('node');
+				res.should.have.status(500);
 			done();
 			});
 	});
-});
 
-mocha.describe('Prueba a obtener un dato mediante una query', function () {
-	this.timeout(5000);
-	it('Deberia devolver el ID_PRUEBA_0', (done) => {
+	it('Obtener resultado para una consulta CouchDB', (done) => {
 		var query = {
 			"selector": {
 				"_id" : "ID_PRUEBA_0"
@@ -117,4 +113,5 @@ mocha.describe('Prueba a obtener un dato mediante una query', function () {
 			done();
 			});
 	});
+    
 });
