@@ -2,11 +2,7 @@ module.exports = function (app, redFabric, mongo) {
 
 
   /**
-   * @api {get} /api/datos Devuelve todos los datos
-   * @apiName GetAllData
-   * @apiGroup Datos
-   *
-   * @apiSuccess {Array} Lista de todos los datos
+   * GET all datos
    */
   app.get("/api/datos", function (req, res) {
     redFabric.init().then(function () {
@@ -19,13 +15,7 @@ module.exports = function (app, redFabric, mongo) {
   });
 
   /**
-   * @api {get} /api/dato/:id Devuelve un dato con id pasada por parametro
-   * @apiName GetDato
-   * @apiGroup Datos
-   *
-   * @apiParam {id} Id del dato
-   *
-   * @apiSuccess {Object} Dato
+   * GET fantastic query
    */
   app.get("/api/dato/:id", function (req, res) {
     var id = req.params.id;
@@ -39,12 +29,7 @@ module.exports = function (app, redFabric, mongo) {
   });
 
   /**
-   * @api {post} /api/query Devuelve el resultado de la consulta
-   * @apiName Query
-   * @apiGroup Datos
-   *
-   *
-   * @apiSuccess {Object/Array} Resultado de la query
+   * DELETE dato : id
    */
   app.post("/api/query", function (req, res) {
     redFabric.init().then(function () {
@@ -57,14 +42,8 @@ module.exports = function (app, redFabric, mongo) {
     })
 });
 
-  /**
-   * @api {delete} /api/dato/:id Elimina un dato
-   * @apiName DeleteDato
-   * @apiGroup Datos
-   *
-   * @apiParam {id} Id del dato
-   *
-   * @apiSuccess {Object} Id de la transaccion
+   /**
+   * DELETE dato : id
    */
   app.delete("/api/dato/:id", function (req, res) {
     var id = req.params.id;
@@ -89,12 +68,7 @@ module.exports = function (app, redFabric, mongo) {
   });
 
   /**
-   * @api {post} /api/dato Añade un dato
-   * @apiName AddDato
-   * @apiGroup Datos
-   *
-   *
-   * @apiSuccess {Object} Id de la transaccion
+   * POST -> add dato
    */
   app.post("/api/dato", function (req, res) {
     var id = "";
@@ -126,13 +100,7 @@ module.exports = function (app, redFabric, mongo) {
   });
 
   /**
-   * @api {put} /api/dato Actualiza un dato
-   * @apiName UpdateDato
-   * @apiGroup Datos
-   *
-   * @apiParam {id} Id del dato
-   *
-   * @apiSuccess {Object} Id de la transaccion
+   * PUT -> update dato
    */
   app.put("/api/dato/:id", function (req, res) {
     var id = req.params.id;
@@ -162,12 +130,8 @@ module.exports = function (app, redFabric, mongo) {
     })
   });
 
- /**
-   * @api {post} /actualizar Actualiza la base de datos local
-   * @apiName UpdateDB
-   * @apiGroup Datos
-   *
-   * @apiSuccess {Object} Resultado
+  /**
+    * Actualizar BD Local
    */
   app.post("/actualizar", function (req, res) {
     redFabric.init().then(function () {
