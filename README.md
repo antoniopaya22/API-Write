@@ -1,5 +1,8 @@
 # API-Write
 
+[![star this repo](http://githubbadges.com/star.svg?user=antonioalfa22&repo=API-Write&style=flat)](https://github.com/antonioalfa22/API-Write)
+[![fork this repo](http://githubbadges.com/fork.svg?user=antonioalfa22&repo=API-Write&style=flat)](https://github.com/antonioalfa22/API-Write/fork)
+
 ## Índice
 
 1. [Home](https://github.com/antonioalfa22/API-Write/wiki)
